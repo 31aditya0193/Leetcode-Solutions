@@ -7,7 +7,7 @@ class Solution {
             return true
         }
         if n % 3 == 0 {
-            return isPowerOfThree(n/3)        //Recursive Case check if 3^(n-1) is power of 2.
+            return isPowerOfThree(n/3)        //Recursive Case check if 3^(n-1) is power of 3.
         } else {
             return false                    //Return false if it's not.
         }
