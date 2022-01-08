@@ -4,12 +4,13 @@ class Solution {
         var min = prices.first!
         
         for price in prices {
-            if price < min {
-                min = price
-            } else if price - min > profit {
+            if price - min > profit {
                 profit = price - min
             }
-        }   
+            if price < min {
+                min = price
+            }
+        }
         return profit
     }
 }
