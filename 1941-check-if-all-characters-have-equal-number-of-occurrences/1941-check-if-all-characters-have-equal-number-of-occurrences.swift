@@ -10,16 +10,7 @@ class Solution {
                 dict[ch]! += 1
             }
         }
-        
-        for (_, cnt) in dict {
-            if tookFirst {
-                tookFirst = false
-                count = cnt
-            }
-            if count != cnt {
-                return false
-            }
-        }
-        return true
+
+        return Set(dict.values).count == 1
     }
 }
