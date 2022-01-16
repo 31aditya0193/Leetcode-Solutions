@@ -15,36 +15,27 @@
  */
 class Solution {
     func leafSimilar(_ root1: TreeNode?, _ root2: TreeNode?) -> Bool {
-        var stack : [TreeNode] = [root1!]
-        var leaves1 : [Int] = []
-        var leaves2 : [Int] = []
-        while stack.count > 0 {
-            let current = stack.removeLast()
-            if current.right != nil {
-                stack.append(current.right!)
-            }
-            if current.left != nil {
-                stack.append(current.left!)
-            }
-            
-            if current.left == nil && current.right == nil {
-                leaves1.append(current.val)
-            }
-        }
-        stack = [root2!]
-        while stack.count > 0 {
-            let current = stack.removeLast()
-            if current.right != nil {
-                stack.append(current.right!)
-            }
-            if current.left != nil {
-                stack.append(current.left!)
-            }
-            
-            if current.left == nil && current.right == nil {
-                leaves2.append(current.val)
-            }
-        }
+        let leaves1 : [Int] = getLeaves(root1)
+        let leaves2 : [Int] = getLeaves(root2)
         return leaves1 == leaves2
+    }
+    
+    func getLeaves(_ root: TreeNode?) -> [Int] {
+        var stack : [TreeNode] = [root!]
+        var leaves : [Int] = []
+        while stack.count > 0 {
+            let current = stack.removeLast()
+            if current.right != nil {
+                stack.append(current.right!)
+            }
+            if current.left != nil {
+                stack.append(current.left!)
+            }
+            
+            if current.left == nil && current.right == nil {
+                leaves.append(current.val)
+            }
+        }
+        return leaves
     }
 }
