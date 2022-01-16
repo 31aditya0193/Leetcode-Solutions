@@ -15,9 +15,7 @@
  */
 class Solution {
     func invertTree(_ root: TreeNode?) -> TreeNode? {
-        if root != nil {
-            mirrorSubTree(root)
-        }
+        mirrorSubTree(root)
         return root
     }
     
