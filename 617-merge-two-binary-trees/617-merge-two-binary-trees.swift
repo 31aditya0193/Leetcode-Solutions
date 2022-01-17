@@ -15,23 +15,18 @@
  */
 class Solution {
     func mergeTrees(_ root1: TreeNode?, _ root2: TreeNode?) -> TreeNode? {
-        var value : Int = 0
-        
-        if root1 == nil && root2 == nil {
-            return nil
+        guard let root1 = root1 else {
+            return root2
         }
         
-        if root1 != nil {
-            value += root1!.val
+        guard let root2 = root2 else {
+            return root1
         }
-        if root2 != nil {
-            value += root2!.val
-        }
-        
-        let result = TreeNode(value)
-        
-        result.left = mergeTrees(root1?.left, root2?.left)
-        result.right = mergeTrees(root1?.right, root2?.right)
-        return result
+        let root = TreeNode(root1.val + root2.val)
+        let left = mergeTrees(root1.left, root2.left)
+        let right = mergeTrees(root1.right , root2.right)
+        root.left = left
+        root.right = right
+        return root
     }
 }
