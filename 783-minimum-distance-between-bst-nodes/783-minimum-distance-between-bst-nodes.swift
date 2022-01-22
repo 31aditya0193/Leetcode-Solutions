@@ -15,10 +15,11 @@
  */
 class Solution {
     func minDiffInBST(_ root: TreeNode?) -> Int {
-        let flat = flatten(root)
+        var list : [Int] = []
+        flatten(root, &list)
         var min = Int.max
-        for idx in 1..<flat.count {
-            let diff = flat[idx] - flat[idx-1]
+        for idx in 1..<list.count {
+            let diff = list[idx] - list[idx-1]
             if min > diff {
                 min = diff
             }
@@ -26,10 +27,10 @@ class Solution {
         return min
     }
     
-    func flatten(_ root: TreeNode?) -> [Int] {
-        if root == nil {
-            return []
-        }
-        return flatten(root?.left) + [root!.val] + flatten(root?.right)
+    func flatten(_ root: TreeNode?, _ list: inout [Int]) {
+        guard let root = root else { return }
+        flatten(root.left, &list)
+        list.append(root.val)
+        flatten(root.right, &list)
     }
 }
