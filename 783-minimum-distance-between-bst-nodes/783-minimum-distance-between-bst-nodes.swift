@@ -17,14 +17,11 @@ class Solution {
     func minDiffInBST(_ root: TreeNode?) -> Int {
         var list : [Int] = []
         flatten(root, &list)
-        var min = Int.max
+        var minm = Int.max
         for idx in 1..<list.count {
-            let diff = list[idx] - list[idx-1]
-            if min > diff {
-                min = diff
-            }
+            minm = min(list[idx] - list[idx-1], minm)
         }
-        return min
+        return minm
     }
     
     func flatten(_ root: TreeNode?, _ list: inout [Int]) {
