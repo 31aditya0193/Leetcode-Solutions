@@ -4,9 +4,8 @@ class Solution {
         let target = N-1
         var result = [Int]()
         for one in trust{
-           if arr[one[0]] >= 0 {arr[one[0]] = -1}
-           let a = one[1]
-           arr[a] += 1
+           arr[one[0]] = -1
+           arr[one[1]] += 1
         }
         for i in 1 ... N {
             if arr[i] == target {return i}
