@@ -1,7 +1,8 @@
 class Solution {
     func findCenter(_ edges: [[Int]]) -> Int {
+        let table = edges[1]
         for v in edges[0] {
-            if edges[1].contains(v) {
+            if table.contains(v) {
                 return v
             }
         }
