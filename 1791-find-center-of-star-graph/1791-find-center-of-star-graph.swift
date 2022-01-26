@@ -1,7 +1,10 @@
 class Solution {
     func findCenter(_ edges: [[Int]]) -> Int {
-        let first = Set(edges[0])
-        let second = Set(edges[1])
-        return first.intersection(second).first!
+        for v in edges[1] {
+            if edges[0].contains(v) {
+                return v
+            }
+        }
+        return -1
     }
 }
