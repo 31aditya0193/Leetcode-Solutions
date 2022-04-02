@@ -9,9 +9,7 @@ class Solution {
         for query in queries {
             let i = per.firstIndex(of: query)!
             result.append(i)
-            let temp = per[i]
-            per.remove(at: i)
-            per.insert(temp, at: 0)
+            per.insert(per.remove(at: i), at: 0)
         }
         return result
     }
