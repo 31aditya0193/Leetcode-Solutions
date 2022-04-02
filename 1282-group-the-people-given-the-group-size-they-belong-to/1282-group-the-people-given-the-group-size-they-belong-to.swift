@@ -3,14 +3,15 @@ class Solution {
         var result : [[Int]] = []
         var table : [Int: [Int]] = [:]
         for idx in 0..<groupSizes.count {
-            if table[groupSizes[idx]] != nil {
-                table[groupSizes[idx]]!.append(idx)
+            let p = groupSizes[idx]
+            if table[p] != nil {
+                table[p]!.append(idx)
             } else {
-                table[groupSizes[idx]] = [idx]
+                table[p] = [idx]
             }
-            if table[groupSizes[idx]]!.count == groupSizes[idx] {
-                result.append(table[groupSizes[idx]]!)
-                table[groupSizes[idx]] = nil
+            if table[p]!.count == p {
+                result.append(table[p]!)
+                table[p] = nil
             }
         }
         return result
