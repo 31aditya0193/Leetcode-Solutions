@@ -4,7 +4,6 @@ class Solution {
         if n % 2 == 0 {
             return count * count
         } else {
-            let count = n/2
             return count * (count + 1)
         }
     }
