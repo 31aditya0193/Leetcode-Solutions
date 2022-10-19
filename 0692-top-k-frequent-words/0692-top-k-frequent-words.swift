@@ -5,14 +5,14 @@ class Solution {
         for word in words {
             table[word, default: 0] += 1
         }
-        var sortedTable = table.sorted(by: { $0.1 > $1.1 })
-        sortedTable.sort {
+        let sortedTable = table.sorted(by: {
             if $0.value != $1.value {
                 return $0.value > $1.value
             } else {
                 return $0.key < $1.key
             }
-        }
+        })
+
         for i in 0..<k {
             result.append(sortedTable[i].key)
         }
