@@ -10,29 +10,25 @@
  */
 class Solution {
     func reverseBetween(_ head: ListNode?, _ left: Int, _ right: Int) -> ListNode? {
-        var current = head
-        var ptr = 1
-        var stack: [Int] = []
-        while ptr < left {
-            current = current?.next
-            ptr += 1
+        var idx = 0
+        let dummy: ListNode? = ListNode(0, head)
+        var previous = dummy
+        
+        while idx < left - 1 {
+            previous = previous?.next
+            idx += 1
         }
-        while ptr >= left && ptr <= right {
-            stack.append(current!.val)
-            current = current?.next
-            ptr += 1
+
+        let current: ListNode? = previous?.next
+        var nextToCurrent: ListNode? = current?.next
+        idx = 0
+        while idx < right - left {
+            current?.next = nextToCurrent?.next;
+            nextToCurrent?.next = previous?.next;
+            previous?.next = nextToCurrent;
+            nextToCurrent = current?.next;
+            idx += 1
         }
-        current = head
-        ptr = 1
-        while ptr < left {
-            current = current?.next
-            ptr += 1
-        }
-        while ptr >= left && ptr <= right {
-            current?.val = stack.removeLast()
-            current = current?.next
-            ptr += 1
-        }
-        return head
+        return dummy!.next
     }
 }
